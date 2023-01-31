@@ -1,0 +1,211 @@
+Internet Protocol Version 4, Src: 10.0.12.2, Dst: 10.0.12.1
+Open Shortest Path First
+    OSPF Header
+    LS Update Packet
+        Number of LSAs: 15
+        LSA-type 1 (Router-LSA), len 96
+        LSA-type 1 (Router-LSA), len 96
+        LSA-type 1 (Router-LSA), len 84
+        LSA-type 10 (Opaque LSA, Area-local scope), len 28
+            .000 0110 1000 0100 = LS Age (seconds): 1668
+            0... .... .... .... = Do Not Age Flag: 0
+            Options: 0x20, (DC) Demand Circuits
+            LS Type: Opaque LSA, Area-local scope (10)
+            Link State ID Opaque Type: Traffic Engineering LSA (1)
+            Link State ID TE-LSA Reserved: 0
+            Link State ID TE-LSA Instance: 0
+            Advertising Router: 2.2.2.2
+            Sequence Number: 0x80000003
+            Checksum: 0x58c7
+            Length: 28
+            MPLS Traffic Engineering LSA
+                Router Address: 2.2.2.2
+        LSA-type 10 (Opaque LSA, Area-local scope), len 28
+        LSA-type 10 (Opaque LSA, Area-local scope), len 28
+        LSA-type 10 (Opaque LSA, Area-local scope), len 108
+            .000 0010 1000 1001 = LS Age (seconds): 649
+            0... .... .... .... = Do Not Age Flag: 0
+            Options: 0x20, (DC) Demand Circuits
+            LS Type: Opaque LSA, Area-local scope (10)
+            Link State ID Opaque Type: Traffic Engineering LSA (1)
+            Link State ID TE-LSA Reserved: 0
+            Link State ID TE-LSA Instance: 7
+            Advertising Router: 3.3.3.3
+            Sequence Number: 0x80000008
+            Checksum: 0xe2bb
+            Length: 108
+            MPLS Traffic Engineering LSA
+                Link Information
+                    TLV Type: 2 - Link Information
+                    TLV Length: 84
+                    Link Type: 1 - Point-to-point
+                    Link ID: 4.4.4.4
+                    Local Interface IP Address: 10.0.34.3
+                    Remote Interface IP Address: 10.0.34.4
+                    Traffic Engineering Metric: 100
+                    Maximum Bandwidth: 125000000 bytes/s (1000000000 bits/s)
+                    Unknown Link sub-TLV: 32770 (For Experimental Use)
+                    Unidirectional Link Delay: 10 usec
+                    Min/Max Unidirectional Link Delay: Min/Max 10/10 usec
+                    Unidirectional Delay Variation: 0 usec
+        LSA-type 10 (Opaque LSA, Area-local scope), len 108
+        LSA-type 10 (Opaque LSA, Area-local scope), len 108
+        LSA-type 10 (Opaque LSA, Area-local scope), len 108
+            .000 0110 1000 1010 = LS Age (seconds): 1674
+            0... .... .... .... = Do Not Age Flag: 0
+            Options: 0x20, (DC) Demand Circuits
+            LS Type: Opaque LSA, Area-local scope (10)
+            Link State ID Opaque Type: Traffic Engineering LSA (1)
+            Link State ID TE-LSA Reserved: 0
+            Link State ID TE-LSA Instance: 9
+            Advertising Router: 3.3.3.3
+            Sequence Number: 0x80000002
+            Checksum: 0x35f0
+            Length: 108
+            MPLS Traffic Engineering LSA
+                Link Information
+                    TLV Type: 2 - Link Information
+                    TLV Length: 84
+                    Link Type: 1 - Point-to-point
+                    Link ID: 2.2.2.2
+                    Local Interface IP Address: 10.0.23.3
+                    Remote Interface IP Address: 10.0.23.2
+                    Traffic Engineering Metric: 1
+                    Maximum Bandwidth: 125000000 bytes/s (1000000000 bits/s)
+                    Unknown Link sub-TLV: 32770 (For Experimental Use)
+                    Unidirectional Link Delay: 10 usec
+                    Min/Max Unidirectional Link Delay: Min/Max 10/10 usec
+                    Unidirectional Delay Variation: 0 usec
+        LSA-type 10 (Opaque LSA, Area-local scope), len 108
+            .000 0010 0001 0100 = LS Age (seconds): 532
+            0... .... .... .... = Do Not Age Flag: 0
+            Options: 0x20, (DC) Demand Circuits
+            LS Type: Opaque LSA, Area-local scope (10)
+            Link State ID Opaque Type: Traffic Engineering LSA (1)
+            Link State ID TE-LSA Reserved: 0
+            Link State ID TE-LSA Instance: 12
+            Advertising Router: 4.4.4.4
+            Sequence Number: 0x80000004
+            Checksum: 0x649c
+            Length: 108
+            MPLS Traffic Engineering LSA
+                Link Information
+                    TLV Type: 2 - Link Information
+                    TLV Length: 84
+                    Link Type: 1 - Point-to-point
+                    Link ID: 3.3.3.3
+                    Local Interface IP Address: 10.0.34.4
+                    Remote Interface IP Address: 10.0.34.3
+                    Traffic Engineering Metric: 1
+                    Maximum Bandwidth: 125000000 bytes/s (1000000000 bits/s)
+                    Unknown Link sub-TLV: 32770 (For Experimental Use)
+                    Unidirectional Link Delay: 10 usec
+                    Min/Max Unidirectional Link Delay: Min/Max 10/10 usec
+                    Unidirectional Delay Variation: 0 usec
+        LSA-type 10 (Opaque LSA, Area-local scope), len 108
+            .000 0101 1111 0110 = LS Age (seconds): 1526
+            0... .... .... .... = Do Not Age Flag: 0
+            Options: 0x20, (DC) Demand Circuits
+            LS Type: Opaque LSA, Area-local scope (10)
+            Link State ID Opaque Type: Traffic Engineering LSA (1)
+            Link State ID TE-LSA Reserved: 0
+            Link State ID TE-LSA Instance: 13
+            Advertising Router: 4.4.4.4
+            Sequence Number: 0x80000002
+            Checksum: 0x4fcb
+            Length: 108
+            MPLS Traffic Engineering LSA
+                Link Information
+                    TLV Type: 2 - Link Information
+                    TLV Length: 84
+                    Link Type: 1 - Point-to-point
+                    Link ID: 2.2.2.2
+                    Local Interface IP Address: 10.0.24.4
+                    Remote Interface IP Address: 10.0.24.2
+                    Traffic Engineering Metric: 1
+                    Maximum Bandwidth: 125000000 bytes/s (1000000000 bits/s)
+                    Unknown Link sub-TLV: 32770 (For Experimental Use)
+                    Unidirectional Link Delay: 10 usec
+                    Min/Max Unidirectional Link Delay: Min/Max 10/10 usec
+                    Unidirectional Delay Variation: 0 usec
+        LSA-type 10 (Opaque LSA, Area-local scope), len 136
+            .000 0110 1000 0100 = LS Age (seconds): 1668
+            0... .... .... .... = Do Not Age Flag: 0
+            Options: 0x20, (DC) Demand Circuits
+            LS Type: Opaque LSA, Area-local scope (10)
+            Link State ID Opaque Type: Router Information (RI) (4)
+            Link State ID Opaque ID: 0
+            Advertising Router: 2.2.2.2
+            Sequence Number: 0x80000003
+            Checksum: 0xfd47
+            Length: 136
+            Opaque Router Information LSA
+                Router Informational Capabilities
+                SR-Algorithm 
+                    TLV Type: SR-Algorithm  (8)
+                    TLV Length: 6
+                    SR-Algorithm: Shortest Path First (0)
+                    SR-Algorithm: Strict Shortest Path First (1)
+                    SR-Algorithm: Unknown (128)
+                    SR-Algorithm: Unknown (129)
+                    SR-Algorithm: Unknown (130)
+                    SR-Algorithm: Unknown (131)
+                SID/Label Range  (Range Size: 101)
+                    TLV Type: SID/Label Range (9)
+                    TLV Length: 12
+                    Range Size: 101
+                    Reserved: 00
+                    SID/Label Sub-TLV  (SID/Label: 20000)
+                Node MSD
+                    TLV Type: Node MSD (12)
+                    TLV Length: 2
+                    MSD Type: Base MPLS Imposition (1)
+                    MSD Value: 10
+                SR Local Block  (Range Size: 1000)
+                    TLV Type: SR Local Block (14)
+                    TLV Length: 12
+                    Range Size: 1000
+                    Reserved: 00
+                    SID/Label Sub-TLV  (SID/Label: 15000)
+                Flexible Algorithm Definition  (128)
+                    TLV Type: Flexible Algorithm Definition (16)
+                    TLV Length: 12
+                    Flex-Algorithm: 128
+                    Metric-Type: IGP Metric (0)
+                    Calc-Type: Shortest Path First (0)
+                    Priority: 128
+                    Flexible Algorithm Exclude Admin Group
+                        TLV Type: Flexible Algorithm Exclude Admin Group (1)
+                        TLV Length: 4
+                        Extended Admin Group[0]: 0x00000400
+                Flexible Algorithm Definition  (129)
+                    TLV Type: Flexible Algorithm Definition (16)
+                    TLV Length: 12
+                    Flex-Algorithm: 129
+                    Metric-Type: IGP Metric (0)
+                    Calc-Type: Shortest Path First (0)
+                    Priority: 128
+                    Flexible Algorithm Exclude Admin Group
+                        TLV Type: Flexible Algorithm Exclude Admin Group (1)
+                        TLV Length: 4
+                        Extended Admin Group[0]: 0x00100000
+                Flexible Algorithm Definition  (130)
+                    TLV Type: Flexible Algorithm Definition (16)
+                    TLV Length: 4
+                    Flex-Algorithm: 130
+                    Metric-Type: Min Unidirectional Link Delay (1)
+                    Calc-Type: Shortest Path First (0)
+                    Priority: 128
+                Flexible Algorithm Definition  (131)
+                    TLV Type: Flexible Algorithm Definition (16)
+                    TLV Length: 4
+                    Flex-Algorithm: 131
+                    Metric-Type: Traffic Engineering Metric (2)
+                    Calc-Type: Shortest Path First (0)
+                    Priority: 128
+                OSPF Dynamic Hostname
+                    TLV Type: OSPF Dynamic Hostname (7)
+                    TLV Length: 2
+                    Dynamic Hostname: R2
+        LSA-type 10 (Opaque LSA, Area-local scope), len 136
+        LSA-type 10 (Opaque LSA, Area-local scope), len 136

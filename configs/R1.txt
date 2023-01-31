@@ -1,0 +1,323 @@
+RP/0/RP0/CPU0:R1#sh run
+Thu Jan 26 14:52:14.583 UTC
+Building configuration...
+!! IOS XR Configuration 7.4.1
+!! Last configuration change at Thu Jan 26 14:50:41 2023 by cisco
+!
+hostname R1
+logging console disable
+username cisco
+ group root-lr
+ group cisco-support
+ secret 10 $6$Y3DP4lna/gN4....$zpEAVRCxu8g/KMh20zzr3a/fus6X.c2iTiSgX6zycNSvkrv4oSrs2u28.2Z7TQh7pV.l5a.eQuqi5F5iN5TPX.
+!
+vrf GOLD
+ address-family ipv4 unicast
+  import route-target
+   1:1
+  !
+  export route-target
+   1:1
+  !
+ !
+!
+vrf BRONZE
+ address-family ipv4 unicast
+  import route-target
+   1:3    
+  !
+  export route-target
+   1:3
+  !
+ !
+!
+vrf CUSTOM
+ address-family ipv4 unicast
+  import route-target
+   1:5
+  !
+  export route-target
+   1:5
+  !
+ !
+!
+vrf SILVER
+ address-family ipv4 unicast
+  import route-target
+   1:2
+  !
+  export route-target
+   1:2    
+  !
+ !
+!
+vrf PLATINUM
+ address-family ipv4 unicast
+  import route-target
+   1:4
+  !
+  export route-target
+   1:4
+  !
+ !
+!
+line console
+ exec-timeout 0 0
+ absolute-timeout 0
+ session-timeout 0
+!
+line default
+ exec-timeout 0 0
+ absolute-timeout 0
+ session-timeout 0
+!         
+call-home
+ service active
+ contact smart-licensing
+ profile CiscoTAC-1
+  active
+  destination transport-method http
+ !
+!
+netconf-yang agent
+ ssh
+!
+interface Loopback0
+ ipv4 address 1.1.1.1 255.255.255.255
+!
+interface Loopback1
+ vrf GOLD
+ ipv4 address 20.10.1.1 255.255.255.0
+!
+interface Loopback2
+ vrf SILVER
+ ipv4 address 20.20.1.1 255.255.255.0
+!
+interface Loopback3
+ vrf BRONZE
+ ipv4 address 20.30.1.1 255.255.255.0
+!
+interface Loopback4
+ vrf PLATINUM
+ ipv4 address 20.40.1.1 255.255.255.0
+!
+interface Loopback5
+ vrf CUSTOM
+ ipv4 address 20.50.1.1 255.255.255.0
+!
+interface MgmtEth0/RP0/CPU0/0
+ shutdown
+!
+interface GigabitEthernet0/0/0/0
+ ipv4 address 10.0.12.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0/1
+ ipv4 address 10.0.13.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0/2
+ shutdown
+!         
+interface GigabitEthernet0/0/0/3
+ ipv4 address 10.10.10.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0/4
+ ipv4 address 192.168.206.131 255.255.255.0
+!
+extcommunity-set opaque GOLD
+  10
+end-set
+!
+extcommunity-set opaque BRONZE
+  30
+end-set
+!
+extcommunity-set opaque CUSTOM
+  50
+end-set
+!
+extcommunity-set opaque SILVER
+  20
+end-set
+!
+extcommunity-set opaque PLATINUM
+  40
+end-set
+!
+route-policy bronze_silver
+  if rd in (1:1) then
+    set extcommunity color GOLD
+  elseif rd in (1:2) then
+    set extcommunity color SILVER
+  elseif rd in (1:3) then
+    set extcommunity color BRONZE
+  elseif rd in (1:4) then
+    set extcommunity color PLATINUM
+  elseif rd in (1:5) then
+    set extcommunity color CUSTOM
+  else
+    pass
+  endif
+end-policy
+!
+router ospf 1
+ distribute link-state
+ router-id 1.1.1.1
+ segment-routing mpls
+ segment-routing forwarding mpls
+ affinity-map
+  red bit-position 20
+  blue bit-position 10
+ !
+ address-family ipv4 unicast
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 1
+   prefix-sid algorithm 128 index 11
+   prefix-sid algorithm 129 index 21
+   prefix-sid algorithm 130 index 31
+   prefix-sid algorithm 131 index 41
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   affinity flex-algo
+    red
+   !
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   affinity flex-algo
+    blue
+   !
+  !
+ !
+ flex-algo 128
+  advertise-definition
+  affinity exclude-any
+   blue
+  !
+ !
+ flex-algo 129
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+ flex-algo 130
+  metric-type delay
+  advertise-definition
+ !
+ flex-algo 131
+  metric-type te-metric
+  advertise-definition
+ !
+!
+router bgp 1
+ bgp router-id 1.1.1.1
+ address-family vpnv4 unicast
+ !
+ neighbor 4.4.4.4
+  remote-as 1
+  update-source Loopback0
+  address-family vpnv4 unicast
+   route-policy bronze_silver out
+  !
+ !
+ vrf GOLD
+  rd 1:1
+  address-family ipv4 unicast
+   as-path-loopcheck out disable
+   redistribute connected
+  !
+ !
+ vrf BRONZE
+  rd 1:3
+  address-family ipv4 unicast
+   as-path-loopcheck out disable
+   redistribute connected
+  !
+ !
+ vrf CUSTOM
+  rd 1:5
+  address-family ipv4 unicast
+   as-path-loopcheck out disable
+   redistribute connected
+  !
+ !
+ vrf SILVER
+  rd 1:2
+  address-family ipv4 unicast
+   as-path-loopcheck out disable
+   redistribute connected
+  !
+ !
+  vrf PLATINUM
+  rd 1:4
+  address-family ipv4 unicast
+   as-path-loopcheck out disable
+   redistribute connected
+  !
+ !
+!
+mpls oam
+!         
+segment-routing
+ global-block 20000 20100
+ traffic-eng
+  interface GigabitEthernet0/0/0/0
+   metric 2
+  !
+  interface GigabitEthernet0/0/0/1
+  !
+  on-demand color 10
+   dynamic
+    metric
+     type igp
+    !
+    sid-algorithm 128
+   !
+  !
+  on-demand color 20
+   dynamic
+    metric
+     type igp
+    !
+    sid-algorithm 129
+   !      
+  !
+  on-demand color 30
+   dynamic
+    metric
+     type latency
+    !
+    sid-algorithm 130
+   !
+  !
+  on-demand color 40
+   dynamic
+    metric
+     type te
+    !
+    sid-algorithm 131
+   !
+  !
+ !
+!
+netconf agent tty
+!
+performance-measurement
+ interface GigabitEthernet0/0/0/0
+  delay-measurement
+   advertise-delay 10
+  !
+ !
+ interface GigabitEthernet0/0/0/1
+  delay-measurement
+   advertise-delay 100
+  !
+ !
+!
+ssh server v2
+ssh server netconf vrf default
+end

@@ -1,0 +1,51 @@
+RP/0/RP0/CPU0:R1#sh mpls forwarding 
+Thu Jan 26 15:30:45.133 UTC
+Local  Outgoing    Prefix             Outgoing     Next Hop        Bytes       
+Label  Label       or ID              Interface                    Switched    
+------ ----------- ------------------ ------------ --------------- ------------
+20002  Pop         SR Pfx (idx 2)     Gi0/0/0/0    10.0.12.2       0           
+20003  Pop         SR Pfx (idx 3)     Gi0/0/0/1    10.0.13.3       0           
+20004  20004       SR Pfx (idx 4)     Gi0/0/0/0    10.0.12.2       4000        
+       20004       SR Pfx (idx 4)     Gi0/0/0/1    10.0.13.3       0           
+20012  Pop         SR Pfx (idx 12)    Gi0/0/0/0    10.0.12.2       0           
+20013  20013       SR Pfx (idx 13)    Gi0/0/0/0    10.0.12.2       0           
+20014  20014       SR Pfx (idx 14)    Gi0/0/0/0    10.0.12.2       0           
+20022  20022       SR Pfx (idx 22)    Gi0/0/0/1    10.0.13.3       0           
+20023  Pop         SR Pfx (idx 23)    Gi0/0/0/1    10.0.13.3       0           
+20024  20024       SR Pfx (idx 24)    Gi0/0/0/1    10.0.13.3       0           
+20032  Pop         SR Pfx (idx 32)    Gi0/0/0/0    10.0.12.2       0           
+20033  20033       SR Pfx (idx 33)    Gi0/0/0/0    10.0.12.2       0           
+20034  20034       SR Pfx (idx 34)    Gi0/0/0/0    10.0.12.2       0           
+20042  Pop         SR Pfx (idx 42)    Gi0/0/0/0    10.0.12.2       0           
+       20042       SR Pfx (idx 42)    Gi0/0/0/1    10.0.13.3       0           
+20043  Pop         SR Pfx (idx 43)    Gi0/0/0/1    10.0.13.3       0           
+20044  20044       SR Pfx (idx 44)    Gi0/0/0/0    10.0.12.2       0           
+       20044       SR Pfx (idx 44)    Gi0/0/0/1    10.0.13.3       0           
+24000  Pop         SR Adj (idx 0)     Gi0/0/0/0    10.0.12.2       0           
+24001  Pop         SR Adj (idx 0)     Gi0/0/0/1    10.0.13.3       0           
+24002  Aggregate   GOLD: Per-VRF Aggr[V]   \
+                                      GOLD                         4008        
+24003  Aggregate   SILVER: Per-VRF Aggr[V]   \
+                                      SILVER                       1336        
+24004  Aggregate   BRONZE: Per-VRF Aggr[V]   \
+                                      BRONZE                       2380        
+24005  Aggregate   CUSTOM: Per-VRF Aggr[V]   \
+                                      CUSTOM                       0           
+24006  Pop         No ID              Gi0/0/0/1    10.0.13.3       0           
+       Pop         No ID              Gi0/0/0/0    10.0.12.2       0           
+24007  Pop         No ID              Gi0/0/0/1    10.0.13.3       0           
+24008  Aggregate   PLATINUM: Per-VRF Aggr[V]   \
+                                      PLATINUM                     5112        
+24009  20014       SR TE: 1 [TE-INT]  Gi0/0/0/0    10.0.12.2       576         
+24010  20024       SR TE: 2 [TE-INT]  Gi0/0/0/1    10.0.13.3       192         
+24011  20034       SR TE: 3 [TE-INT]  Gi0/0/0/0    10.0.12.2       288         
+24014  Pop         No ID              srte_c_20_ep point2point     0           
+24016  Pop         No ID              srte_c_40_ep point2point     0           
+24021  20044       SR TE: 4 [TE-INT]  Gi0/0/0/0    10.0.12.2       352         
+       20044       SR TE: 4 [TE-INT]  Gi0/0/0/1    10.0.13.3       224         
+24022  Pop         No ID              Gi0/0/0/1    10.0.13.3       0           
+       Pop         No ID              Gi0/0/0/0    10.0.12.2       0           
+24023  Pop         No ID              srte_c_30_ep point2point     0           
+24024  Pop         No ID              Gi0/0/0/0    10.0.12.2       0           
+24026  Pop         No ID              Gi0/0/0/0    10.0.12.2       0           
+24027  Pop         No ID              srte_c_10_ep point2point     0

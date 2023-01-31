@@ -1,0 +1,128 @@
+RP/0/RP0/CPU0:R2#sh run
+Thu Jan 26 14:54:36.517 UTC
+Building configuration...
+!! IOS XR Configuration 7.4.1
+!! Last configuration change at Thu Jan 26 14:41:09 2023 by cisco
+!
+hostname R2
+username cisco
+ group root-lr
+ group cisco-support
+ secret 10 $6$n0wyv/.jzSvj5v/.$zKNlzSk64SR5iVB/ZC3OhnoNl7fmhtIXXULACb9XEcf1yBSmIQJvqnhReS79RIgRAGh.WokLT0rz6n5Wr6Bpi0
+!
+call-home
+ service active
+ contact smart-licensing
+ profile CiscoTAC-1
+  active
+  destination transport-method http
+ !
+!
+netconf-yang agent
+ ssh
+!
+interface Loopback0
+ ipv4 address 2.2.2.2 255.255.255.255
+!
+interface MgmtEth0/RP0/CPU0/0
+ shutdown
+!
+interface GigabitEthernet0/0/0/0
+ ipv4 address 10.0.12.2 255.255.255.0
+!
+interface GigabitEthernet0/0/0/1
+ ipv4 address 10.0.24.2 255.255.255.0
+!
+interface GigabitEthernet0/0/0/2
+ ipv4 address 10.0.23.2 255.255.255.0
+!
+interface GigabitEthernet0/0/0/3
+ ipv4 address 10.10.10.2 255.255.255.0
+!
+interface GigabitEthernet0/0/0/4
+ ipv4 address 192.168.206.132 255.255.255.0
+!
+router ospf 1
+ distribute link-state
+ router-id 2.2.2.2
+ segment-routing mpls
+ segment-routing forwarding mpls
+ affinity-map
+  red bit-position 20
+  blue bit-position 10
+ !
+ address-family ipv4 unicast
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 2
+   prefix-sid algorithm 128 index 12
+   prefix-sid algorithm 129 index 22
+   prefix-sid algorithm 130 index 32
+   prefix-sid algorithm 131 index 42
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   affinity flex-algo
+    red
+   !
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   affinity flex-algo
+    red
+   !
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+  !
+ !
+ flex-algo 128
+  advertise-definition
+  affinity exclude-any
+   blue
+  !
+ !
+ flex-algo 129
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+ flex-algo 130
+  metric-type delay
+  advertise-definition
+ !        
+ flex-algo 131
+  metric-type te-metric
+  advertise-definition
+ !
+!
+segment-routing
+ global-block 20000 20100
+ traffic-eng
+ !
+!
+ssh server v2
+ssh server netconf vrf default
+performance-measurement
+ interface GigabitEthernet0/0/0/0
+  next-hop ipv4 10.0.12.1
+  delay-measurement
+   advertise-delay 10
+  !
+ !
+ interface GigabitEthernet0/0/0/1
+  next-hop ipv4 4.4.4.4
+  delay-measurement
+   advertise-delay 100
+  !
+ !
+ interface GigabitEthernet0/0/0/2
+  delay-measurement
+   advertise-delay 10
+  !
+ !
+!
+end

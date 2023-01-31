@@ -1,0 +1,42 @@
+RP/0/RP0/CPU0:R1#sh ospf topology algo 128
+Thu Jan 26 14:59:46.038 UTC
+
+        Process ospf-1
+
+  Instance : default
+   Router ID : 1.1.1.1
+    Area : 0 (4 nodes)
+      Node : 1.1.1.1 (root) (2 links)  
+        Algos supported: 128, 129, 130, 131
+        Flex Algo Definition: 128
+        Flex Algo Definition: 129
+        Flex Algo Definition: 130
+        Flex Algo Definition: 131
+        Link : 2.2.2.2 10.0.12.1 Point-to-point
+        Link : 3.3.3.3 10.0.13.1 Point-to-point
+      Node : 2.2.2.2  (3 links)  
+        Algos supported: 128, 129, 130, 131
+        Flex Algo Definition: 128
+        Flex Algo Definition: 129
+        Flex Algo Definition: 130
+        Flex Algo Definition: 131
+        Link : 1.1.1.1 10.0.12.2 Point-to-point
+        Link : 3.3.3.3 10.0.23.2 Point-to-point
+        Link : 4.4.4.4 10.0.24.2 Point-to-point
+      Node : 3.3.3.3  (3 links)  
+        Algos supported: 128, 129, 130, 131
+        Flex Algo Definition: 128
+        Flex Algo Definition: 129
+        Flex Algo Definition: 130
+        Flex Algo Definition: 131
+        Link : 1.1.1.1 10.0.13.3 Point-to-point
+        Link : 2.2.2.2 10.0.23.3 Point-to-point
+        Link : 4.4.4.4 10.0.34.3 Point-to-point
+      Node : 4.4.4.4  (2 links)  
+        Algos supported: 128, 129, 130, 131
+        Flex Algo Definition: 128
+        Flex Algo Definition: 129
+        Flex Algo Definition: 130
+        Flex Algo Definition: 131
+        Link : 2.2.2.2 10.0.24.4 Point-to-point
+        Link : 3.3.3.3 10.0.34.4 Point-to-point

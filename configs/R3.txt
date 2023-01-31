@@ -1,0 +1,150 @@
+RP/0/RP0/CPU0:R3#sh run
+Thu Jan 26 14:55:04.297 UTC
+Building configuration...
+!! IOS XR Configuration 7.4.1
+!! Last configuration change at Thu Jan 26 14:34:52 2023 by cisco
+!
+hostname R3
+logging console disable
+username cisco
+ group root-lr
+ group cisco-support
+ secret 10 $6$WjVoT/P6xLGz3T/.$mJbPCsMenmeqpgJyoJXL37kbCpqrmnkP2SwCAjDnraMgqxaXgm577rD0eo/hWS3M3yg8FxNplvbrqcISRIuE7.
+!
+line console
+ exec-timeout 0 0
+ absolute-timeout 0
+ session-timeout 0
+ transport input ssh
+!
+line default
+ exec-timeout 0 0
+ absolute-timeout 0
+ session-timeout 0
+ transport input ssh
+!
+call-home
+ service active
+ contact smart-licensing
+ profile CiscoTAC-1
+  active
+  destination transport-method http
+ !
+!
+netconf-yang agent
+ ssh
+!
+interface Loopback0
+ ipv4 address 3.3.3.3 255.255.255.255
+!
+interface MgmtEth0/RP0/CPU0/0
+ shutdown
+!
+interface GigabitEthernet0/0/0/0
+ ipv4 address 10.0.34.3 255.255.255.0
+!
+interface GigabitEthernet0/0/0/1
+ ipv4 address 10.0.13.3 255.255.255.0
+!
+interface GigabitEthernet0/0/0/2
+ ipv4 address 10.0.23.3 255.255.255.0
+!
+interface GigabitEthernet0/0/0/3
+ ipv4 address 10.10.10.3 255.255.255.0
+!
+interface GigabitEthernet0/0/0/4
+ ipv4 address 192.168.206.133 255.255.255.0
+!
+router ospf 1
+ distribute link-state
+ router-id 3.3.3.3
+ segment-routing mpls
+ segment-routing forwarding mpls
+ affinity-map
+  red bit-position 20
+  blue bit-position 10
+ !
+ address-family ipv4 unicast
+ area 0
+  segment-routing mpls
+  interface Loopback0
+   passive enable
+   prefix-sid index 3
+   prefix-sid algorithm 128 index 13
+   prefix-sid algorithm 129 index 23
+   prefix-sid algorithm 130 index 33
+   prefix-sid algorithm 131 index 43
+  !
+  interface GigabitEthernet0/0/0/0
+   network point-to-point
+   affinity flex-algo
+    blue
+   !
+  !
+  interface GigabitEthernet0/0/0/1
+   network point-to-point
+   affinity flex-algo
+    blue
+   !
+  !
+  interface GigabitEthernet0/0/0/2
+   network point-to-point
+  !
+ !
+ flex-algo 128
+  metric-type delay
+  advertise-definition
+  fast-reroute disable
+  affinity exclude-any
+   blue
+  !
+ !
+ flex-algo 129
+  advertise-definition
+  affinity exclude-any
+   red
+  !
+ !
+ flex-algo 130
+  metric-type delay
+  advertise-definition
+ !
+ flex-algo 131
+  metric-type te-metric
+  advertise-definition
+ !
+!
+mpls oam
+!
+segment-routing
+ global-block 20000 20100
+ traffic-eng
+  interface GigabitEthernet0/0/0/0
+   metric 100
+  !
+ !
+!
+ssh timeout 120
+ssh server v2
+ssh server netconf vrf default
+performance-measurement
+ interface GigabitEthernet0/0/0/0
+  next-hop ipv4 10.0.34.4
+  delay-measurement
+   advertise-delay 10
+  !
+ !
+ interface GigabitEthernet0/0/0/1
+  next-hop ipv4 10.0.13.1
+  delay-measurement
+   advertise-delay 10
+  !
+ !        
+ interface GigabitEthernet0/0/0/2
+  next-hop ipv4 10.0.23.2
+  delay-measurement
+   advertise-delay 10
+  !
+ !
+!
+end

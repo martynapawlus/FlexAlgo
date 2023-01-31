@@ -1,0 +1,73 @@
+RP/0/RP0/CPU0:R1#sh ospf topology paths algo 128
+Thu Jan 26 15:01:29.216 UTC
+
+        Process ospf-1
+
+  Instance default
+   Router ID : 1.1.1.1
+    Area 0
+      Node 2.2.2.2   
+        Algo 128, Distance 1
+          10.0.12.2, from 2.2.2.2, via GigabitEthernet0/0/0/0
+      Node 3.3.3.3   
+        Algo 128, Distance 2
+          10.0.12.2, from 2.2.2.2, via GigabitEthernet0/0/0/0
+      Node 4.4.4.4   
+        Algo 128, Distance 2
+          10.0.12.2, from 2.2.2.2, via GigabitEthernet0/0/0/0
+
+RP/0/RP0/CPU0:R1#sh ospf topology paths algo 129
+Thu Jan 26 15:01:37.363 UTC
+
+        Process ospf-1
+
+  Instance default
+   Router ID : 1.1.1.1
+    Area 0
+      Node 2.2.2.2   
+        Algo 129, Distance 2
+          10.0.13.3, from 3.3.3.3, via GigabitEthernet0/0/0/1
+      Node 3.3.3.3   
+        Algo 129, Distance 1
+          10.0.13.3, from 3.3.3.3, via GigabitEthernet0/0/0/1
+      Node 4.4.4.4   
+        Algo 129, Distance 2
+          10.0.13.3, from 3.3.3.3, via GigabitEthernet0/0/0/1
+
+RP/0/RP0/CPU0:R1#sh ospf topology paths algo 130
+Thu Jan 26 15:01:40.277 UTC
+
+        Process ospf-1
+
+  Instance default
+   Router ID : 1.1.1.1
+    Area 0
+      Node 2.2.2.2   
+        Algo 130, Distance 10
+          10.0.12.2, from 2.2.2.2, via GigabitEthernet0/0/0/0
+      Node 3.3.3.3   
+        Algo 130, Distance 20
+          10.0.12.2, from 2.2.2.2, via GigabitEthernet0/0/0/0
+      Node 4.4.4.4   
+        Algo 130, Distance 30
+          10.0.12.2, from 2.2.2.2, via GigabitEthernet0/0/0/0
+
+RP/0/RP0/CPU0:R1#sh ospf topology paths algo 131
+Thu Jan 26 15:01:42.549 UTC
+
+        Process ospf-1
+
+  Instance default
+   Router ID : 1.1.1.1
+    Area 0
+      Node 2.2.2.2   
+        Algo 131, Distance 2
+          10.0.12.2, from 2.2.2.2, via GigabitEthernet0/0/0/0
+          10.0.13.3, from 3.3.3.3, via GigabitEthernet0/0/0/1
+      Node 3.3.3.3   
+        Algo 131, Distance 1
+          10.0.13.3, from 3.3.3.3, via GigabitEthernet0/0/0/1
+      Node 4.4.4.4   
+        Algo 131, Distance 3
+          10.0.12.2, from 2.2.2.2, via GigabitEthernet0/0/0/0
+          10.0.13.3, from 3.3.3.3, via GigabitEthernet0/0/0/1

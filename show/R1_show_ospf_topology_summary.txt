@@ -1,0 +1,36 @@
+RP/0/RP0/CPU0:R1#show ospf topology summary
+Thu Jan 26 15:04:19.564 UTC
+
+        Process ospf-1
+
+ Instance default
+  Router ID       : 1.1.1.1
+  Number of Areas : 1
+  Number of Algos : 4
+  Max Path count  : 64
+  Route count     : 4
+  SR Global Block : 20000 - 20100
+   Area 0
+    Number of Nodes : 4
+     Algo 128
+      FAD Advertising Router : 4.4.4.4
+      FAD Area ID : 0
+       Algo Type   : 0
+       Metric Type : 0
+       Exclude Affinity : 0x00000400 
+     Algo 129
+      FAD Advertising Router : 4.4.4.4
+      FAD Area ID : 0
+       Algo Type   : 0
+       Metric Type : 0
+       Exclude Affinity : 0x00100000 
+     Algo 130
+      FAD Advertising Router : 4.4.4.4
+      FAD Area ID : 0
+       Algo Type   : 0
+       Metric Type : 1
+     Algo 131
+      FAD Advertising Router : 4.4.4.4
+      FAD Area ID : 0
+       Algo Type   : 0
+       Metric Type : 2
