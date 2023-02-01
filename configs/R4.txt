@@ -304,12 +304,5 @@ performance-measurement
    advertise-delay 10
   !
  !
- protocol twamp-light
-  measurement delay
-   unauthenticated
-    querier-dst-port 12000
-   !
-  !
- !
 !
 end
