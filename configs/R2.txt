@@ -2,7 +2,6 @@ RP/0/RP0/CPU0:R2#sh run
 Thu Jan 26 14:54:36.517 UTC
 Building configuration...
 !! IOS XR Configuration 7.4.1
-!! Last configuration change at Thu Jan 26 14:41:09 2023 by cisco
 !
 hostname R2
 username cisco
@@ -100,7 +99,7 @@ router ospf 1
  !
 !
 segment-routing
- global-block 20000 20100
+ global-block 20000 21500
  traffic-eng
  !
 !
