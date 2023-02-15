@@ -2,7 +2,6 @@ RP/0/RP0/CPU0:R1#sh run
 Thu Jan 26 14:52:14.583 UTC
 Building configuration...
 !! IOS XR Configuration 7.4.1
-!! Last configuration change at Thu Jan 26 14:50:41 2023 by cisco
 !
 hostname R1
 logging console disable
@@ -85,26 +84,6 @@ netconf-yang agent
 interface Loopback0
  ipv4 address 1.1.1.1 255.255.255.255
 !
-interface Loopback1
- vrf GOLD
- ipv4 address 20.10.1.1 255.255.255.0
-!
-interface Loopback2
- vrf SILVER
- ipv4 address 20.20.1.1 255.255.255.0
-!
-interface Loopback3
- vrf BRONZE
- ipv4 address 20.30.1.1 255.255.255.0
-!
-interface Loopback4
- vrf PLATINUM
- ipv4 address 20.40.1.1 255.255.255.0
-!
-interface Loopback5
- vrf CUSTOM
- ipv4 address 20.50.1.1 255.255.255.0
-!
 interface MgmtEth0/RP0/CPU0/0
  shutdown
 !
@@ -122,6 +101,26 @@ interface GigabitEthernet0/0/0/3
 !
 interface GigabitEthernet0/0/0/4
  ipv4 address 192.168.206.131 255.255.255.0
+!
+interface GigabitEthernet0/0/0/5
+ vrf GOLD
+ ipv4 address 20.10.1.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0/6
+ vrf SILVER
+ ipv4 address 20.20.1.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0/7
+ vrf BRONZE
+ ipv4 address 20.30.1.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0/8
+ vrf PLATINUM
+ ipv4 address 20.40.1.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0/9
+ vrf CUSTOM
+ ipv4 address 20.50.1.1 255.255.255.0
 !
 extcommunity-set opaque GOLD
   10
