@@ -74,26 +74,6 @@ netconf-yang agent
 interface Loopback0
  ipv4 address 4.4.4.4 255.255.255.255
 !
-interface Loopback1
- vrf GOLD
- ipv4 address 20.10.4.4 255.255.255.0
-!
-interface Loopback2
- vrf SILVER
- ipv4 address 20.20.4.4 255.255.255.0
-!
-interface Loopback3
- vrf BRONZE
- ipv4 address 20.30.4.4 255.255.255.0
-!
-interface Loopback4
- vrf PLATINUM
- ipv4 address 20.40.4.4 255.255.255.0
-!
-interface Loopback5
- vrf CUSTOM
- ipv4 address 20.50.4.4 255.255.255.0
-!         
 interface MgmtEth0/RP0/CPU0/0
  shutdown
 !
@@ -112,6 +92,26 @@ interface GigabitEthernet0/0/0/3
 interface GigabitEthernet0/0/0/4
  ipv4 address 192.168.206.134 255.255.255.0
 !
+interface GigabitEthernet0/0/0/5
+ vrf GOLD
+ ipv4 address 20.10.4.4 255.255.255.0
+!
+interface GigabitEthernet0/0/0/6
+ vrf SILVER
+ ipv4 address 20.20.4.4 255.255.255.0
+!
+interface GigabitEthernet0/0/0/7
+ vrf BRONZE
+ ipv4 address 20.30.4.4 255.255.255.0
+!
+interface GigabitEthernet0/0/0/8
+ vrf PLATINUM
+ ipv4 address 20.40.4.4 255.255.255.0
+!
+interface GigabitEthernet0/0/0/9
+ vrf CUSTOM
+ ipv4 address 20.50.4.4 255.255.255.0
+!         
 extcommunity-set opaque GOLD
   10
 end-set
@@ -250,7 +250,7 @@ router bgp 1
  !
 !
 segment-routing
- global-block 20000 20100
+ global-block 20000 21500
  traffic-eng
   interface GigabitEthernet0/0/0/0
   !
