@@ -117,7 +117,7 @@ router ospf 1
 mpls oam
 !
 segment-routing
- global-block 20000 20100
+ global-block 20000 21500
  traffic-eng
   interface GigabitEthernet0/0/0/0
    metric 100
